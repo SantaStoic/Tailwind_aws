@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50">
+    <header class="bg-white shadow">
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <a
+          href="index.html"
+          class="text-4xl font-bold text-gray-800"
+          id="site-title"
+          >Stop & Shop</a
+        >
+        <!-- Language Selector -->
+        <select
+          id="language-select"
+          class="bg-gray-200 text-gray-800 px-4 py-2 rounded"
+        >
+          <option value="en">English</option>
+          <option value="km">Khmer</option>
+        </select>
+
+        <!--Back TO Home -->
+        <a
+          href="index.html"
+          class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
+        >
+          Back to Home
+        </a>
+      </div>
+    </header>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <h2
+          class="text-3xl font-bold mb-8 text-gray-800 text-center"
+          id="payment-heading"
+        >
+          Payment
+        </h2>
+
+        <!-- Save Information Option -->
+        <!-- <div class="bg-gray-100 p-6 rounded-lg shadow-md mb-8">
+          <h3 class="text-xl font-semibold text-gray-700 mb-4">
+            Save Information for Future Orders
+          </h3>
+          <div class="flex items-center mb-4">
+            <input type="checkbox" id="save-info" class="mr-2" />
+            <label for="save-info" class="text-gray-600"
+              >Save my address for future use</label
+            >
+          </div>
+        </div> -->
+
+        <!-- Saved Information Box (Visible if Save Info is checked) -->
+        <!-- <div
+          id="saved-info-box"
+          class="hidden bg-gray-50 p-6 rounded-lg shadow-md mb-8"
+        >
+          <h3 class="text-xl font-semibold text-gray-700 mb-4">
+            Saved Information
+          </h3>
+          <p class="text-gray-600 mb-2"><strong>First Name:</strong> John</p>
+          <p class="text-gray-600 mb-2"><strong>Last Name:</strong> Doe</p>
+          <p class="text-gray-600 mb-2">
+            <strong>Address:</strong> 123 Main Street, Apt 4B
+          </p>
+          <p class="text-gray-600 mb-2">
+            <strong>Phone Number:</strong> (555) 123-4567
+          </p>
+          <p class="text-gray-600 mb-4">
+            <strong>Email:</strong> john.doe@example.com
+          </p>
+          <button
+            type="button"
+            class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+            id="use-saved-info"
+          >
+            Use Saved Information
+          </button>
+        </div> -->
+
+        <!-- Payment Information Form -->
+        <form id="payment-form">
+          <!-- User Information Section -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label
+                for="first-name"
+                class="block text-gray-700 font-medium mb-2"
+                id="firstname"
+                >First Name</label
+              >
+              <input
+                type="text"
+                id="first-name"
+                name="first-name"
+                class="w-full p-3 border border-gray-300 rounded-lg"
+                required
+              />
+            </div>
+            <div>
+              <label
+                for="last-name"
+                class="block text-gray-700 font-medium mb-2"
+                >Last Name</label
+              >
+              <input
+                type="text"
+                id="last-name"
+                name="last-name"
+                class="w-full p-3 border border-gray-300 rounded-lg"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="mb-6">
+            <label for="address" class="block text-gray-700 font-medium mb-2"
+              >Address</label
+            >
+            <input
+              type="text"
+              id="address"
+              name="address"
+              class="w-full p-3 border border-gray-300 rounded-lg"
+              required
+            />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label
+                for="phone-number"
+                class="block text-gray-700 font-medium mb-2"
+                >Phone Number</label
+              >
+              <input
+                type="tel"
+                id="phone-number"
+                name="phone-number"
+                class="w-full p-3 border border-gray-300 rounded-lg"
+                required
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-gray-700 font-medium mb-2"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-full p-3 border border-gray-300 rounded-lg"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Zip Code and Country Section -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label for="zip-code" class="block text-gray-700 font-medium mb-2"
+                >Zip Code</label
+              >
+              <input
+                type="text"
+                id="zip-code"
+                name="zip-code"
+                class="w-full p-3 border border-gray-300 rounded-lg"
+                required
+              />
+            </div>
+            <div>
+              <label for="country" class="block text-gray-700 font-medium mb-2"
+                >Country</label
+              >
+              <select
+                id="country"
+                name="country"
+                class="w-full p-3 border border-gray-300 rounded-lg"
+                required
+              >
+                <option value="us">United States</option>
+                <option value="ca">Canada</option>
+                <option value="gb">United Kingdom</option>
+                <option value="au">Australia</option>
+                <option value="de">Germany</option>
+                <option value="fr">France</option>
+                <option value="in">India</option>
+                <option value="jp">Japan</option>
+                <option value="it">Italy</option>
+                <option value="es">Spain</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Payment Method Section -->
+          <div class="mb-6">
+            <label
+              for="payment-method"
+              class="block text-gray-700 font-medium mb-2"
+              >Select Payment Method</label
+            >
+            <select
+              id="payment-method"
+              name="payment-method"
+              class="w-full p-3 border border-gray-300 rounded-lg"
+            >
+              <option value="simple">Simple Payment</option>
+              <option value="paypal">PayPal</option>
+            </select>
+          </div>
+
+          <div id="paypal-button-container" class="hidden mb-6">
+            <!-- PayPal button will be rendered here -->
+          </div>
+
+          <button
+            id="process-payment"
+            type="submit"
+            class="bg-blue-500 text-white px-6 py-2 rounded shadow hover:bg-blue-600"
+          >
+            Proceed to Payment
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AeMgeSWFudNn7CCcrPeePM0NS7btB_aqB4XDq-D7OSav7dtizZ8f0EnfqJFkK0FmNbxUHX9cmbbI9DkS"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const total = cart
+          .reduce((sum, item) => sum + item.price, 0)
+          .toFixed(2);
+
+        const paymentForm = document.getElementById("payment-form");
+        const paypalButtonContainer = document.getElementById(
+          "paypal-button-container"
+        );
+        const processPaymentButton = document.getElementById("process-payment");
+        const paymentMethodSelect = document.getElementById("payment-method");
+
+        // Add event listener for form submission
+        paymentForm.addEventListener("submit", (e) => {
+          e.preventDefault(); // Prevent default form submission
+
+          const selectedPaymentMethod = paymentMethodSelect.value;
+
+          if (selectedPaymentMethod === "paypal") {
+            // Hide the "Proceed to Payment" button and show PayPal button container
+            processPaymentButton.style.display = "none";
+            paypalButtonContainer.classList.remove("hidden");
+
+            // Render PayPal buttons dynamically
+            paypal
+              .Buttons({
+                createOrder: function (data, actions) {
+                  return actions.order.create({
+                    purchase_units: [
+                      {
+                        amount: {
+                          value: total, // Use dynamic total from cart
+                        },
+                      },
+                    ],
+                  });
+                },
+                onApprove: function (data, actions) {
+                  return actions.order.capture().then(function (details) {
+                    alert(
+                      `Payment Successful! Thank you, ${details.payer.name.given_name}`
+                    );
+                    localStorage.removeItem("cart"); // Clear the cart
+                    window.location.href = "thank_you.html"; // Redirect to thank you page
+                  });
+                },
+                onCancel: function () {
+                  alert("Payment was canceled.");
+                },
+                onError: function (err) {
+                  console.error("PayPal Error:", err);
+                  alert("An error occurred during payment. Please try again.");
+                },
+              })
+              .render("#paypal-button-container");
+          } else if (selectedPaymentMethod === "simple") {
+            // Handle Simple Payment logic
+            alert(`Payment Successful! Total: $${total}`);
+            localStorage.removeItem("cart"); // Clear the cart
+            window.location.href = "thank_you.html"; // Redirect to thank you page
+          } else {
+            alert("Please select a valid payment method.");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

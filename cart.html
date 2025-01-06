@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header class="bg-white shadow">
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <a href="index.html" class="text-4xl font-bold text-gray-800"
+          >Stop & Shop</a
+        >
+        <a
+          href="index.html"
+          class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
+        >
+          Back to Home
+        </a>
+      </div>
+    </header>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-8 text-gray-800 text-center">
+          Your Cart
+        </h2>
+        <div id="cart-items" class="space-y-4"></div>
+        <div class="mt-6 text-right">
+          <p class="text-lg font-bold">
+            Total: $<span id="total-price">0.00</span>
+          </p>
+          <button
+            onclick="window.location.href='payment.html';"
+            class="bg-green-500 text-white px-6 py-2 rounded shadow hover:bg-green-600 mt-4"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
+    </section>
+    <script>
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Render cart items
+      function renderCart() {
+        const cartItems = document.getElementById("cart-items");
+        const totalPriceEl = document.getElementById("total-price");
+        cartItems.innerHTML = "";
+
+        let total = 0;
+        cart.forEach((item, index) => {
+          total += item.price;
+          const itemDiv = document.createElement("div");
+          itemDiv.className =
+            "flex justify-between items-center bg-white shadow p-4 rounded-lg";
+          itemDiv.innerHTML = `
+            <span class="text-gray-800 font-medium">${item.name}</span>
+            <span class="text-gray-600">$${item.price.toFixed(2)}</span>
+            <button
+              onclick="removeItem(${index})"
+              class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+            >
+              Remove
+            </button>
+          `;
+          cartItems.appendChild(itemDiv);
+        });
+
+        totalPriceEl.textContent = total.toFixed(2);
+      }
+
+      // Remove item from cart
+      function removeItem(index) {
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+
+      // Checkout functionality
+      function checkout() {
+        alert("Checkout complete!");
+        localStorage.removeItem("cart");
+        renderCart();
+      }
+
+      // Initialize cart on page load
+      document.addEventListener("DOMContentLoaded", renderCart);
+    </script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
